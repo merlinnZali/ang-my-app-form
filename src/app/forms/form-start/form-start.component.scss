@@ -1,0 +1,24 @@
+.form-bloc{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 20px;
+
+    font-size: 14px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.form-bloc-item{
+    background-color: #cccaca;
+    text-align: center;
+    font-size: 40px;
+    line-height: 1.5;
+}
+
+.errors{
+    background-color: red;
+    color: black;
+}

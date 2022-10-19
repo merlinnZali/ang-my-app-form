@@ -1,0 +1,28 @@
+<div [formGroup]="form">
+    <div class="form-bloc">
+        <label for="line1">Address Line 1</label>
+        <input type="text" id="line1" formControlName="addressLine1" >
+    </div>
+    <div class="form-bloc">
+        <label for="city">City</label>
+        <input type="text" id="city" formControlName="city">
+    </div>
+    <div class="form-bloc">
+        <label for="state">State</label>
+        <select id="state" formControlName="state" (change)="changeState($event)">
+            <option disabled>Select Oppo state</option>
+            <option>Choose oppo state</option>
+            <option *ngFor="let state of states" [value]="state" [selected]="selectedState(state)">
+                {{ state }}
+            </option>
+        </select>
+    </div>
+    <div class="form-bloc">
+        <label for="zip">Zip</label>
+        <input type="text" id="zip" formControlName="zip">
+        <span *ngIf="zipControl.touched && zipControl.hasError('required')" class="errors">
+            Field is required
+            </span>
+    </div>
+    
+</div> 

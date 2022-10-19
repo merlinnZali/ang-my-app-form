@@ -1,0 +1,107 @@
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <ng-container *ngIf="address">
+        <div class="center-bloc">
+
+        </div>
+        <div class="form-bloc">
+            <label for="line1">Address Line 1</label>
+            <input type="text" id="line1" formControlName="addressLine1" >
+            <span *ngIf="controls.addressLine1?.touched && controls.addressLine1?.hasError('required')" class="errors">
+                Field is required
+              </span>
+        </div>
+        <div class="form-bloc">
+            <label for="city">City</label>
+            <input type="text" id="city" formControlName="city">
+            <span *ngIf="controls.city?.touched && controls.city?.hasError('required')" class="errors">
+                Field is required
+              </span>
+        </div>
+        <div class="form-bloc">
+            <label for="state">State</label>
+            <select id="state" formControlName="state" (change)="changeState($event)">
+                <option disabled>Select Oppo state</option>
+                <option>Choose oppo state</option>
+                <option *ngFor="let state of states" >
+                    {{ state }}
+                </option>
+            </select>
+            <span *ngIf="controls.state?.touched && controls.state?.hasError('required')" class="errors">
+                Field is required
+              </span>
+        </div>
+        <div class="form-bloc">
+            <label for="zip">Zip</label>
+            <input type="text" id="zip" formControlName="zip">
+            <span *ngIf="controls.zip?.touched && controls.zip?.hasError('required')" class="errors">
+                Field is required
+              </span>
+        </div>
+        
+        <div>
+            <div class="error-block" *ngIf="submitted && handleError('zip', 'required')">
+                You must provide a value!
+              </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </ng-container>    
+</form>
+
+<br>
+<hr>
+<br>
+
+<form [formGroup]="signupForm" (ngSubmit)="submit()">
+    <div class="form-bloc">
+        <label for="firstName">FirstName</label>
+        <input type="text" id="firstName" formControlName="firstName">
+    </div>
+    <div class="form-bloc">
+        <label for="lastName">LastName</label>
+        <input type="text" id="lastName" formControlName="lastName">
+    </div>
+    <div class="center-bloc">
+        <app-address-form-p formControlName="profile"></app-address-form-p>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>  
+</form>
+<p>
+    Form is {{signupForm.valid ? 'Valid' : 'Invalid'}}
+</p>
+  
+<pre>
+{{signupForm.value | json}}
+</pre>
+
+
+<ng-container *ngIf="signupForm.valueChanges | async as value">
+    <pre>
+        {{value | json}}
+    </pre>
+</ng-container>
+
+<hr>
+<br>
+
+<form [formGroup]="signupForm1" (ngSubmit)="submit1()">
+    <div class="form-bloc">
+        <label for="firstName">FirstName</label>
+        <input type="text" id="firstName" formControlName="firstName">
+    </div>
+    <div class="form-bloc">
+        <label for="lastName">LastName</label>
+        <input type="text" id="lastName" formControlName="lastName">
+    </div>
+    <div class="center-bloc">
+        <app-address-form></app-address-form>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>  
+</form>
+<p>
+    Form is {{signupForm1.valid ? 'Valid' : 'Invalid'}}
+</p>
+  
+<pre>
+{{signupForm1.value | json}}
+</pre>
