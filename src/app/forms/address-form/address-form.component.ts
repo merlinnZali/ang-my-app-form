@@ -45,6 +45,8 @@ export class AddressFormComponent implements OnDestroy , OnInit {
         city: ['',{updateOn: 'blur', validators:[Validators.required], asyncValidators: []}],
         state: ['', Validators.required],
         zip: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(3)]]
+    },{
+      updateOn: 'blur'
     });
 
     return this.form
